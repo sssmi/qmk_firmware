@@ -26,10 +26,10 @@
 
 
 #if !defined(CFQ_USER_KEY0)
-#  define CFQ_USER_KEY0 KC_BSPC
+#  define CFQ_USER_KEY0 KC_FIND
 #endif
 #if !defined(CFQ_USER_KEY1)
-#  define CFQ_USER_KEY1 CFQ_KC_FN1
+#  define CFQ_USER_KEY1 KC_LABK
 #endif
 #if !defined(CFQ_USER_KEY2)
 #  define CFQ_USER_KEY2 KC_INS
@@ -50,7 +50,7 @@
 #  define CFQ_USER_KEY7 CFQ_KC_FN3
 #endif
 #if !defined(CFQ_USER_KEY8)
-#  define CFQ_USER_KEY8 KC_DEL
+#  define CFQ_USER_KEY8 KC_RABK
 #endif
 
 #ifdef CFQ_USE_80_KEYS
@@ -299,15 +299,15 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  * .--------------------------------------------------.  .--------------------------------------------------.
- * | Grave  |   !  |   @  |   #  |   $  |   %  |   {  |  |  }   |   ^  |   &  |   *  |   -  |   =  | BSpace |
+ * | Grave  |   !  |   @  |   #  |   $  |   %  |   {  |  |  }   |   ^  |   &  |   *  |   -  |   =  | Find   |
  * |--------+------+------+------+------+------+------|  |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |   (  |  |  )   |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |  |      |------+------+------+------+------+--------|
  * | Esc    |   A  |   S  |   D  |   F  |   G  |------|  |------|   H  |   J  |   K  |   L  |   ;  |   '    |
- * |--------+------+------+------+------+------|   [  |  |  ]   |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |  |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+ * |--------+------+------+------+------+------|   [  |  |MEH(])|------+------+------+------+------+--------|
+ * | LShift | C(Z) |   X  |   C  |   V  |   B  |      |  |      |   N  |   M  |   ,  |   .  |   /  | RShift |
  * '--------+------+------+------+------+-------------'  '-------------+------+------+------+------+--------'
- *   | LCtl |Super | Alt  | ~L1  |Space |                              | Left | Down | Up   |Right | Del  |
+ *   | LCtl |Alt  |  Cmd  |  <   |Space |                              | Left | Down | Up   |Right |  >   |
  *   '----------------------------------'                              '----------------------------------'
  *                                      .-------------.  .-------------.
  *                                      | Ins  |NumClk|  | Home | End  |
@@ -343,20 +343,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Otherwise, it needs KC_* */
 [LAYER_BASE] = LAYOUT_ergodox_76_or_80(  /* layer 0 : default */
   /* left hand */
-  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH,       KC_DLR, KC_PERC, KC_LCBR,
-  KC_TAB,  KC_Q,    KC_W,    KC_E,          KC_R,   KC_T,    KC_LPRN,
-  KC_ESC,  KC_A,    KC_S,    KC_D,          KC_F,   KC_G,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,          KC_V,   KC_B,    KC_LBRC,
-  KC_LCTL, KC_LGUI, KC_LALT, CFQ_USER_KEY1, KC_SPC,
-                                                    CFQ_USER_KEY2, CFQ_USER_KEY3,
-                                     K80(L0K0),     K80(L0K1),     CFQ_USER_KEY6,
-                                     CFQ_USER_KEY4, CFQ_USER_KEY5, CFQ_USER_KEY7,
+  KC_GRV,  KC_EXLM,    KC_AT,   KC_HASH,       KC_DLR, KC_PERC, KC_LCBR,
+  KC_TAB,  KC_Q,       KC_W,    KC_E,          KC_R,   KC_T,    KC_LPRN,
+  KC_ESC,  KC_A,       KC_S,    KC_D,          KC_F,   KC_G,
+  KC_LSFT, CTL_T(KC_Z),KC_X,    KC_C,          KC_V,   KC_B,    KC_LBRC,
+  KC_LCTL, KC_LALT,    KC_LGUI, CFQ_USER_KEY1, KC_SPC,
+                                                      CFQ_USER_KEY2, CFQ_USER_KEY3,
+                                       K80(L0K0),     K80(L0K1),     CFQ_USER_KEY6,
+                                       CFQ_USER_KEY4, CFQ_USER_KEY5, CFQ_USER_KEY7,
   /* right hand */
-  KC_RCBR,     KC_CIRC, KC_AMPR, KC_ASTR,KC_MINS, KC_EQL,    CFQ_USER_KEY0,
-  KC_RPRN,     KC_Y,    KC_U,    KC_I,   KC_O,    KC_P,      KC_BSLS,
-               KC_H,    KC_J,    KC_K,   KC_L,    KC_SCLN,   KC_QUOT,
-  KC_RBRC,     KC_N,    KC_M,    KC_COMM,KC_DOT,  KC_SLSH,   KC_RSFT,
-                        KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
+  KC_RCBR,       KC_CIRC, KC_AMPR, KC_ASTR,KC_MINS, KC_EQL,    CFQ_USER_KEY0,
+  KC_RPRN,       KC_Y,    KC_U,    KC_I,   KC_O,    KC_P,      KC_BSLS,
+                 KC_H,    KC_J,    KC_K,   KC_L,    KC_SCLN,   KC_QUOT,
+  MEH_T(KC_RBRC),KC_N,    KC_M,    KC_COMM,KC_DOT,  KC_SLSH,   KC_RSFT,
+                          KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
   KC_HOME, KC_END,
   KC_PGUP, K80(L0K2),  K80(L0K3),
   KC_PGDN, CFQ_KC_FN2, KC_ENT
