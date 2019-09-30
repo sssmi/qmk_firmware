@@ -32,10 +32,11 @@
 #  define CFQ_USER_KEY1 KC_LABK
 #endif
 #if !defined(CFQ_USER_KEY2)
-#  define CFQ_USER_KEY2 KC_INS
+// CFQ_KC_FN3
+#  define CFQ_USER_KEY2 MO(1)
 #endif
 #if !defined(CFQ_USER_KEY3)
-#  define CFQ_USER_KEY3 KC_NLCK
+#  define CFQ_USER_KEY3 TO(2)
 #endif
 #if !defined(CFQ_USER_KEY4)
 #  define CFQ_USER_KEY4 KC_BSPC
@@ -47,7 +48,7 @@
 #  define CFQ_USER_KEY6 KC_CAPS
 #endif
 #if !defined(CFQ_USER_KEY7)
-#  define CFQ_USER_KEY7 CFQ_KC_FN3
+#  define CFQ_USER_KEY7 KC_MEH
 #endif
 #if !defined(CFQ_USER_KEY8)
 #  define CFQ_USER_KEY8 KC_RABK
@@ -288,11 +289,11 @@ enum custom_keycodes {
 
 #ifdef CFQ_USE_MOMENTARY_LAYER_KEYS
 #define CFQ_KC_FN1 MO(1)
-#define CFQ_KC_FN2 MO(2)
+#define KC_TAB     MO(2)
 #define CFQ_KC_FN3 MO(3)
 #else
 #define CFQ_KC_FN1 TT(1)
-#define CFQ_KC_FN2 TT(2)
+#define KC_TAB     TT(2)
 #define CFQ_KC_FN3 TT(3)
 #endif
 
@@ -310,11 +311,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | LCtl |Alt  |  Cmd  |  <   |Space |                              | Left | Down | Up   |Right |  >   |
  *   '----------------------------------'                              '----------------------------------'
  *                                      .-------------.  .-------------.
- *                                      | Ins  |NumClk|  | Home | End  |
+ *                                      |MO(1) |TO(2) |  | PgUp | End  |
  *                               .------+------+------|  |------+------+------.
- *                               |      |      |CapsLk|  | PgUp |      |      |
- *                               |BSpace| Del  |------|  |------| ~L2  |Enter |
- *                               |      |      | ~L3  |  | PgDn |      |      |
+ *                               |      |      |CapsLk|  | PgDn |      |      |
+ *                               |BSpace| Del  |------|  |------| Tab  |Enter |
+ *                               |      |      | MEH  |  | HYPR |      |      |
  *                               '--------------------'  '--------------------'
  *
  * Optional overrides: see CFQ_USER_KEY# defines.
@@ -357,9 +358,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_H,    KC_J,    KC_K,   KC_L,    KC_SCLN,   KC_QUOT,
   MEH_T(KC_RBRC),KC_N,    KC_M,    KC_COMM,KC_DOT,  KC_SLSH,   KC_RSFT,
                           KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
-  KC_HOME, KC_END,
-  KC_PGUP, K80(L0K2),  K80(L0K3),
-  KC_PGDN, CFQ_KC_FN2, KC_ENT
+  KC_PGUP, KC_END,
+  KC_PGDN, K80(L0K2),  K80(L0K3),
+  KC_HYPR, KC_TAB,     KC_ENT
 ),
 /* Keymap 1: KeyPad, Macro Record
  *
