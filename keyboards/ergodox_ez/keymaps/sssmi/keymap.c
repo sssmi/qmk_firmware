@@ -262,6 +262,7 @@ enum custom_keycodes {
   M_ARROW_LMINUS,
   M_ARROW_REQL,
   M_ARROW_LEQL,
+  M_CONSOLE,
 
   /* allow user defined words for each character:
    * use CFQ_WORD_[A-Z] defines. */
