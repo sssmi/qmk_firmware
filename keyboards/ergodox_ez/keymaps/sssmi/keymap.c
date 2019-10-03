@@ -288,15 +288,7 @@ enum custom_keycodes {
 #  define DYN_REC_STOP KC_TRNS
 #endif
 
-#ifdef CFQ_USE_MOMENTARY_LAYER_KEYS
-#define CFQ_KC_FN1 MO(1)
-#define KC_TAB     MO(2)
-#define CFQ_KC_FN3 MO(3)
-#else
-#define CFQ_KC_FN1 TT(1)
-#define KC_TAB     TT(2)
-#define CFQ_KC_FN3 TT(3)
-#endif
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
