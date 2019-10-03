@@ -48,7 +48,7 @@
 #  define CFQ_USER_KEY6 KC_CAPS
 #endif
 #if !defined(CFQ_USER_KEY7)
-#  define CFQ_USER_KEY7 KC_MEH
+#  define CFQ_USER_KEY7 MEH_T(UC(0x00F6)) // Ö
 #endif
 #if !defined(CFQ_USER_KEY8)
 #  define CFQ_USER_KEY8 KC_RABK
@@ -316,7 +316,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                               .------+------+------|  |------+------+------.
  *                               |      |      |CapsLk|  | PgDn |      |      |
  *                               |BSpace| Del  |------|  |------| Tab  |Enter |
- *                               |      |      | MEH  |  | HYPR |      |      |
+ *                               |      |      |MEH(ö)|  | HYPR |      |      |
  *                               '--------------------'  '--------------------'
  *
  * Optional overrides: see CFQ_USER_KEY# defines.
@@ -361,7 +361,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
   KC_PGUP, TG(3),
   KC_PGDN, K80(L0K2),  K80(L0K3),
-  KC_HYPR, KC_TAB,     KC_ENT
+  HYPR_T(UC(0x00E4)), KC_TAB,     KC_ENT
 ),
 /* Keymap 1: KeyPad, Macro Record
  *
