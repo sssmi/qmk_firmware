@@ -22,14 +22,17 @@
 /** Holding right/left or left/right shift for single or double quote pair */
 /* #define CFQ_USE_SHIFT_QUOTES */
 
+#define KC_SWE_O UC(0x00F6)
+#define KC_SWE_A UC(0xC3)
+
 #define CFQ_USE_DYNAMIC_MACRO
 
 
 #if !defined(CFQ_USER_KEY0)
-#  define CFQ_USER_KEY0 KC_FIND
+#  define CFQ_USER_KEY0 LGUI(KC_F)
 #endif
 #if !defined(CFQ_USER_KEY1)
-#  define CFQ_USER_KEY1 KC_LABK
+#  define CFQ_USER_KEY1 KC_LGUI
 #endif
 #if !defined(CFQ_USER_KEY2)
 // CFQ_KC_FN3
@@ -48,10 +51,10 @@
 #  define CFQ_USER_KEY6 KC_CAPS
 #endif
 #if !defined(CFQ_USER_KEY7)
-#  define CFQ_USER_KEY7 MEH_T(UC(0x00F6)) // Ö
+#  define CFQ_USER_KEY7 MEH_T(KC_SWE_O) 
 #endif
 #if !defined(CFQ_USER_KEY8)
-#  define CFQ_USER_KEY8 KC_RABK
+#  define CFQ_USER_KEY8 KC_RGUI
 #endif
 
 #ifdef CFQ_USE_80_KEYS
@@ -301,7 +304,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   [  |  |MEH(])|------+------+------+------+------+--------|
  * | LShift | C(Z) |   X  |   C  |   V  |   B  |      |  |      |   N  |   M  |   ,  |   .  |   /  | RShift |
  * '--------+------+------+------+------+-------------'  '-------------+------+------+------+------+--------'
- *   | LCtl |Alt  |  Cmd  |  <   |Space |                              | Left | Down | Up   |Right |  >   |
+ *   |  <   | LCtl |Alt  |  Cmd  |Space |                              | Left | Down | Up   |Right |  Cmd   |
  *   '----------------------------------'                              '----------------------------------'
  *                                      .-------------.  .-------------.
  *                                      |MO(1) |TG(2) |  | PgUp |TG(3) |
@@ -341,7 +344,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,       KC_W,    KC_E,          KC_R,   KC_T,    KC_LPRN,
   KC_ESC,  KC_A,       KC_S,    KC_D,          KC_F,   KC_G,
   KC_LSFT, CTL_T(KC_Z),KC_X,    KC_C,          KC_V,   KC_B,    KC_LBRC,
-  KC_LCTL, KC_LALT,    KC_LGUI, CFQ_USER_KEY1, KC_SPC,
+  KC_LABK, KC_LCTL,    KC_LALT, CFQ_USER_KEY1, KC_SPC,
                                                       CFQ_USER_KEY2, CFQ_USER_KEY3,
                                        K80(L0K0),     K80(L0K1),     CFQ_USER_KEY6,
                                        CFQ_USER_KEY4, CFQ_USER_KEY5, CFQ_USER_KEY7,
@@ -353,7 +356,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
   KC_PGUP, TG(3),
   KC_PGDN, K80(L0K2),  K80(L0K3),
-  HYPR_T(UC(0x00E4)), KC_TAB,     KC_ENT
+  MT(KC_HYPR, KC_SWE_A), KC_TAB,     KC_ENT
 ),
 /* Keymap 1: KeyPad, Macro Record
  *
