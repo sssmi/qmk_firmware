@@ -42,10 +42,10 @@
 #  define CFQ_USER_KEY3 KC_PGDN
 #endif
 #if !defined(CFQ_USER_KEY4)
-#  define CFQ_USER_KEY4 KC_BSPC
+#  define CFQ_USER_KEY4 KC_SPC
 #endif
 #if !defined(CFQ_USER_KEY5)
-#  define CFQ_USER_KEY5 KC_DEL
+#  define CFQ_USER_KEY5 KC_BSPC
 #endif
 #if !defined(CFQ_USER_KEY6)
 #  define CFQ_USER_KEY6 KC_CAPS
@@ -266,6 +266,7 @@ enum custom_keycodes {
   M_ARROW_REQL,
   M_ARROW_LEQL,
   M_CONSOLE,
+  M_FUNC,
 
   /* allow user defined words for each character:
    * use CFQ_WORD_[A-Z] defines. */
@@ -309,8 +310,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                      .-------------.  .-------------.
  *                                      |MEH(ö) |PgDn |  | PgUp | HYPR |
  *                               .------+------+------|  |------+------+------.
- *                               |      |      |CapsLk|  |MO(1) |      |      |
- *                               |BSpace| Del  |------|  |------| Tab  |Enter |
+ *                               |      |      |CapsLk|  |TG(1) |      |      |
+ *                               |Space |BSpace|------|  |------| Del  |Enter |
  *                               |      |      |TG(2) |  |TG(3) |      |      |
  *                               '--------------------'  '--------------------'
  *
@@ -355,8 +356,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   MEH_T(KC_RBRC),KC_N,    KC_M,    KC_COMM,KC_DOT,  KC_SLSH,   KC_RSFT,
                           KC_LEFT, KC_DOWN,KC_UP,   KC_RGHT,   CFQ_USER_KEY8,
   KC_PGUP, MT(KC_HYPR, KC_SWE_A),
-  MO(1),   K80(L0K2),  K80(L0K3),
-  TG(3),   KC_TAB,     KC_ENT
+  TG(1),   K80(L0K2),  K80(L0K3),
+  TG(3),   KC_DEL,     KC_ENT
 ),
 /* Keymap 1: KeyPad, Macro Record
  *
@@ -365,11 +366,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+------|  |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |  =>  |  ()  |  |  )(  |  <=  |   7  |   8  |   9  |   +  |        |
  * |--------+------+------+------+------+------|      |  |      |------+------+------+------+------+--------|
- * |        |      |      |      |c.l() |  ''  |------|  |------|  <-  |   4  |   5  |   6  |   +  |        |
+ * |        |      |      | func |c.l() |  ''  |------|  |------|  <-  |   4  |   5  |   6  |   +  |        |
  * |--------+------+------+------+------+------|  []  |  |  ][  |------+------+------+------+------+--------|
- * |        |      |      |      |      |  <>  |      |  |      |  </> |   1  |   2  |   3  | Enter|        |
+ * |        |      |      |      |      |  <>  |      |  |      |  </> |   1  |   2  |   3  |      |        |
  * '--------+------+------+------+------+-------------'  '-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                              |   0  |      |   .  | Enter|      |
+ *   |      |      |      |      |      |                              |   0  |      |   .  |      |      |
  *   '----------------------------------'                              '----------------------------------'
  *                                      .-------------.  .-------------.
  *                                      |      |      |  |      |      |
@@ -384,7 +385,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* left hand */
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,          M_BRACKET_IN_CBR,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   M_ARROW_REQL,     M_BRACKET_IN_PRN,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M_CONSOLE, M_QUOTE_SINGLE,
+  KC_TRNS, KC_TRNS, KC_TRNS, M_FUNC,  M_CONSOLE, M_QUOTE_SINGLE,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   M_BRACKET_IN_ANG, M_BRACKET_IN_BRC,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                        KC_TRNS,  KC_TRNS,
@@ -392,10 +393,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               KC_TRNS, KC_TRNS,  KC_TRNS,
   /* right hand */
   M_BRACKET_OUT_CBR, KC_TRNS,           KC_NLCK, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS,  KC_TRNS,
-  M_BRACKET_OUT_PRN, M_ARROW_LEQL,      KC_KP_7, KC_KP_8,     KC_KP_9,        KC_KP_PLUS,  KC_TRNS,
-                     M_ARROW_LMINUS,    KC_KP_4, KC_KP_5,     KC_KP_6,        KC_KP_PLUS,  KC_TRNS,
-  M_BRACKET_OUT_BRC, M_BRACKET_OUT_ANG, KC_KP_1, KC_KP_2,     KC_KP_3,        KC_KP_ENTER, KC_TRNS,
-                                        KC_KP_0, KC_TRNS,     KC_KP_DOT,      KC_KP_ENTER, KC_TRNS,
+  M_BRACKET_OUT_PRN, M_ARROW_LEQL,      KC_KP_7, KC_KP_8,     KC_KP_9,        KC_KP_PLUS,   KC_TRNS,
+                     M_ARROW_LMINUS,    KC_KP_4, KC_KP_5,     KC_KP_6,        KC_KP_PLUS,   KC_TRNS,
+  M_BRACKET_OUT_BRC, M_BRACKET_OUT_ANG, KC_KP_1, KC_KP_2,     KC_KP_3,        KC_TRNS,      KC_TRNS,
+                                        KC_KP_0, KC_TRNS,     KC_KP_DOT,      KC_TRNS,      KC_TRNS,
   KC_TRNS, KC_TRNS,
   KC_TRNS, K80(L1K2), K80(L1K3),
   KC_TRNS, KC_TRNS, KC_TRNS
@@ -586,6 +587,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_CONSOLE:  /* console.log() */
       if (record->event.pressed) {
         SEND_STRING("console.log()" SS_TAP(X_LEFT));
+        return false;
+      }
+      break;
+    case M_FUNC:  /* function() {} */
+      if (record->event.pressed) {
+        SEND_STRING("function() {}" SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT));
         return false;
       }
       break;
