@@ -42,10 +42,10 @@
 #  define CFQ_USER_KEY3 KC_PGDN
 #endif
 #if !defined(CFQ_USER_KEY4)
-#  define CFQ_USER_KEY4 KC_SPC
+#  define CFQ_USER_KEY4 KC_BSPC
 #endif
 #if !defined(CFQ_USER_KEY5)
-#  define CFQ_USER_KEY5 KC_BSPC
+#  define CFQ_USER_KEY5 KC_DEL
 #endif
 #if !defined(CFQ_USER_KEY6)
 #  define CFQ_USER_KEY6 KC_CAPS
